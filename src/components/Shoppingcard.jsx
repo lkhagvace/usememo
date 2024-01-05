@@ -4,10 +4,9 @@ import { ProductContextValue } from "@/context/ProductContext";
 
 export const Shoppingcard = () => {
   const { productValue, setProductValue } = useContext(ProductContextValue);
-  // console.log("productValue", productValue);
   const calculating = () => {
-    productValue.map();
+    return productValue.reduce((acc, cur) => acc + cur.id, 0);
   };
-  const totalPrice = useMemo(() => calculating, []);
-  return <div>{totalPrice}</div>;
+  const total = useMemo(() => calculating(), [productValue]);
+  return <div>{total}</div>;
 };

@@ -13,13 +13,9 @@ export const Product = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
-  const state = [];
+
   const adding = (product) => {
-    state.push(product);
-    setProductValue(...state);
-  };
-  const removing = (product) => {
-    state.pop(product);
+    setProductValue([...productValue, product]);
   };
   return (
     <div>
@@ -30,9 +26,6 @@ export const Product = () => {
             <div className="text-white">price: {product.id}</div>
             <button onClick={() => adding(product)} className="text-white">
               Add to card
-            </button>
-            <button onClick={() => removing(product)} className="text-white">
-              Remove from card
             </button>
           </div>
         );
